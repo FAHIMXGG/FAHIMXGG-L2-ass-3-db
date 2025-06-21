@@ -1,4 +1,3 @@
-// src/routes/book.routes.ts
 import { Router } from 'express';
 import {
   createBook,

@@ -1,5 +1,3 @@
-Live link: https://fahimxgg-l2-ass-3-db.vercel.app/
-
 📚 Library Management System API
 This project implements a RESTful API for a Library Management System, built with Express, TypeScript, and MongoDB (via Mongoose). It provides functionalities for managing books and handling borrowing records, incorporating robust data validation, business logic, and advanced database operations like aggregation.
 
@@ -64,7 +62,7 @@ CORS: CORS middleware
 
 📂 Project Structure
 The project is organized into a modular and scalable structure:
-```
+```tree
 
 ├── src
 │   ├── app.ts                 # Express application setup and middleware
@@ -140,7 +138,7 @@ Method: POST
 Description: Creates a new book record.
 
 Request Body (JSON):
-```
+```json
 {
   "title": "The Theory of Everything",
   "author": "Stephen Hawking",
@@ -190,7 +188,7 @@ limit (optional): Number of results to return (default: 10). Use a large number 
 Example Query: /api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5
 
 Success Response (200 OK):
-```
+```json
 {
   "success": true,
   "message": "Books retrieved successfully",
@@ -223,7 +221,7 @@ URL Parameters:
 bookId (string): The MongoDB _id of the book.
 
 Success Response (200 OK):
-```
+```json
 {
   "success": true,
   "message": "Book retrieved successfully",
@@ -263,7 +261,7 @@ Request Body (JSON):
 (You can update any valid field(s) here.)
 
 Success Response (200 OK):
-```
+```json
 {
   "success": true,
   "message": "Book updated successfully",
@@ -297,7 +295,7 @@ URL Parameters:
 bookId (string): The MongoDB _id of the book to delete.
 
 Success Response (200 OK):
-```
+```json
 {
   "success": true,
   "message": "Book deleted successfully",
@@ -324,7 +322,7 @@ If copies becomes 0, the book's available status is updated to false.
 Saves the borrow record.
 
 Request Body (JSON):
-```
+```json
 {
   "book": "64ab3f9e2a4b5c6d7e8f9012",
   "quantity": 2,
@@ -332,7 +330,7 @@ Request Body (JSON):
 }
 ```
 Success Response (201 Created):
-```
+```json
 {
   "success": true,
   "message": "Book borrowed successfully",
@@ -370,7 +368,7 @@ Calculates the total borrowed quantity per book.
 Includes book details (title and isbn) from the Book collection.
 
 Success Response (200 OK):
-```
+```json
 {
   "success": true,
   "message": "Borrowed books summary retrieved successfully",
@@ -394,7 +392,7 @@ Success Response (200 OK):
 ```
 ⚠️ Generic Error Response
 For all error conditions, the API returns a consistent error structure:
-```
+```json
 {
   "message": "A brief error message explaining what went wrong.",
   "success": false,
@@ -405,7 +403,7 @@ For all error conditions, the API returns a consistent error structure:
 }
 ```
 Example: Validation Error
-```
+```json
 {
   "message": "Validation failed",
   "success": false,

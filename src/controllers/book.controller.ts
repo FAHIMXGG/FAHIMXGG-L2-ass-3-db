@@ -1,4 +1,3 @@
-// src/controllers/book.controller.ts
 import { Request, Response } from 'express';
 import Book, { BookGenre } from '../models/Book';
 import catchAsync from '../utils/catchAsync';
