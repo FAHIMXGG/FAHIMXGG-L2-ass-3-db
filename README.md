@@ -64,6 +64,7 @@ CORS: CORS middleware
 
 📂 Project Structure
 The project is organized into a modular and scalable structure:
+```
 
 ├── src
 │   ├── app.ts                 # Express application setup and middleware
@@ -89,6 +90,7 @@ The project is organized into a modular and scalable structure:
 ├── package.json               # Project dependencies and scripts
 ├── tsconfig.json              # TypeScript compiler configuration
 ├── .gitignore                 # Files and directories to ignore in Git
+```
 
 🛠️ Setup Instructions
 Follow these steps to get the project up and running on your local machine:
@@ -138,7 +140,7 @@ Method: POST
 Description: Creates a new book record.
 
 Request Body (JSON):
-
+```
 {
   "title": "The Theory of Everything",
   "author": "Stephen Hawking",
@@ -167,7 +169,7 @@ Success Response (201 Created):
     "updatedAt": "2024-11-19T10:23:45.123Z"
   }
 }
-
+```
 2. Get All Books
 URL: /api/books
 
@@ -188,7 +190,7 @@ limit (optional): Number of results to return (default: 10). Use a large number 
 Example Query: /api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5
 
 Success Response (200 OK):
-
+```
 {
   "success": true,
   "message": "Books retrieved successfully",
@@ -208,7 +210,7 @@ Success Response (200 OK):
     { /* ... more book objects ... */ }
   ]
 }
-
+```
 3. Get Book by ID
 URL: /api/books/:bookId
 
@@ -221,7 +223,7 @@ URL Parameters:
 bookId (string): The MongoDB _id of the book.
 
 Success Response (200 OK):
-
+```
 {
   "success": true,
   "message": "Book retrieved successfully",
@@ -238,7 +240,7 @@ Success Response (200 OK):
     "updatedAt": "2024-11-19T10:23:45.123Z"
   }
 }
-
+```
 Error Response (404 Not Found): If bookId is not found.
 
 4. Update Book
@@ -261,7 +263,7 @@ Request Body (JSON):
 (You can update any valid field(s) here.)
 
 Success Response (200 OK):
-
+```
 {
   "success": true,
   "message": "Book updated successfully",
@@ -278,7 +280,7 @@ Success Response (200 OK):
     "updatedAt": "2024-11-20T08:30:00.000Z"
   }
 }
-
+```
 Error Response (404 Not Found): If bookId is not found.
 
 Error Response (400 Bad Request): If validation fails for updated fields.
@@ -295,13 +297,13 @@ URL Parameters:
 bookId (string): The MongoDB _id of the book to delete.
 
 Success Response (200 OK):
-
+```
 {
   "success": true,
   "message": "Book deleted successfully",
   "data": null
 }
-
+```
 Error Response (404 Not Found): If bookId is not found.
 
 6. Borrow a Book
@@ -322,15 +324,15 @@ If copies becomes 0, the book's available status is updated to false.
 Saves the borrow record.
 
 Request Body (JSON):
-
+```
 {
   "book": "64ab3f9e2a4b5c6d7e8f9012",
   "quantity": 2,
   "dueDate": "2025-07-18T00:00:00.000Z"
 }
-
+```
 Success Response (201 Created):
-
+```
 {
   "success": true,
   "message": "Book borrowed successfully",
@@ -343,7 +345,7 @@ Success Response (201 Created):
     "updatedAt": "2025-06-18T07:12:15.123Z"
   }
 }
-
+```
 Error Responses:
 
 400 Bad Request: Invalid Book ID, quantity less than 1, or due date not in the future.
@@ -368,7 +370,7 @@ Calculates the total borrowed quantity per book.
 Includes book details (title and isbn) from the Book collection.
 
 Success Response (200 OK):
-
+```
 {
   "success": true,
   "message": "Borrowed books summary retrieved successfully",
@@ -389,10 +391,10 @@ Success Response (200 OK):
     }
   ]
 }
-
+```
 ⚠️ Generic Error Response
 For all error conditions, the API returns a consistent error structure:
-
+```
 {
   "message": "A brief error message explaining what went wrong.",
   "success": false,
@@ -401,9 +403,9 @@ For all error conditions, the API returns a consistent error structure:
     "details": "Specific error details or message"
   }
 }
-
+```
 Example: Validation Error
-
+```
 {
   "message": "Validation failed",
   "success": false,
@@ -423,7 +425,7 @@ Example: Validation Error
     }
   }
 }
-
+```
 🌐 Deployment
 This application is configured for easy deployment on Vercel.
 
