@@ -19,6 +19,8 @@ export interface IBook extends Document {
   available: boolean;
   createdAt: Date;
   updatedAt: Date;
+
+  checkAndUpdateAvailability: () => Promise<void>;
 }
 
 
@@ -80,6 +82,15 @@ BookSchema.pre('save', function (next) {
   next(); 
 });
 
+BookSchema.methods.checkAndUpdateAvailability = async function () {
+  if (this.copies === 0 && this.available === true) {
+    this.available = false;
+    await this.save();
+  } else if (this.copies > 0 && this.available === false) {
+    this.available = true;
+    await this.save();
+  }
+};
 
 
 export default model<IBook>('Book', BookSchema);
