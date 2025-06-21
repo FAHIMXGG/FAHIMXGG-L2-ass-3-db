@@ -98,12 +98,17 @@ export const getBorrowedBooksSummary = catchAsync(
       },
     ]);
 
+    const formattedSummary = summary.map((item) => ({
+      book: item.book,
+      totalQuantity: item.totalQuantity,
+    }));
+
     res
       .status(200)
       .json(
         successResponse(
           "Borrowed books summary retrieved successfully",
-          summary
+          formattedSummary
         )
       );
   }
